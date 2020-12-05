@@ -47,7 +47,7 @@ while True:
 
         elif var_controle == '4': #encerrar
             print('encerrando...')
-            time.sleep(2)
+            time.sleep(3)
             break
 
         else: #opção invalida

@@ -23,7 +23,7 @@ def system(ui):
         ui.l_titulo.show()
 
         def veryCheckBox3():
-            
+        
             cont_play = ui.rb_playlist.isChecked()
             cont_arq  = ui.rb_umarq.isChecked()
             if cont_arq or cont_play:
@@ -133,14 +133,22 @@ def system(ui):
 
     def verificarpb():
         link = ui.line_link.text()
-        tit = Sistema.titulo(link)
-    
-        if tit != False:
-            ui.l_titulo.setText(tit)
-            ui.l_titulo.show()
-            veryCheckBox()
-        else:
-            print('erro')
+        
+        cont_play = ui.rb_playlist.isChecked()
+        cont_arq  = ui.rb_umarq.isChecked()
+        controle_midia = ''
+        if cont_play or cont_arq:
+            if cont_arq:
+                controle_midia = "Um arq"
+            elif cont_play:
+                controle_midia = "Playlist"
+            tit = Sistema.titulo(link, controle_midia)
+            if tit != False:
+                ui.l_titulo.setText(tit)
+                ui.l_titulo.show()
+                veryCheckBox()
+            else:
+                print('erro')
     ui.pb_verificar.clicked.connect(verificarpb)
             
             

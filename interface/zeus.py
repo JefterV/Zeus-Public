@@ -212,7 +212,7 @@ class Ui_MainWindow(object):
         spacerItem5 = QtWidgets.QSpacerItem(19, 14, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Maximum)
         self.gridLayout_6.addItem(spacerItem5, 3, 1, 1, 1)
         self.l_titulo = QtWidgets.QLabel(self.f_pai_direito)
-        self.l_titulo.setMaximumSize(QtCore.QSize(255, 20))
+        self.l_titulo.setMaximumSize(QtCore.QSize(16777215, 20))
         self.l_titulo.setAlignment(QtCore.Qt.AlignCenter)
         self.l_titulo.setObjectName("l_titulo")
         self.gridLayout_6.addWidget(self.l_titulo, 2, 1, 1, 1)

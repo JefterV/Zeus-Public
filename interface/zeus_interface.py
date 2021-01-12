@@ -2,6 +2,7 @@ from zeus import *
 from SistemaZEUS.sistema import Sistema
 from SistemaZEUS.image_mnp import edit_image
 #from SistemadeReproduzing import arqmp3
+import os
 
 def system(ui):
     ui.l_titulo.hide()
@@ -46,7 +47,7 @@ def system(ui):
                     tipoarq = '2'
                 else:
                     tipoarq = '3'
-            caminho = "C:/Users/Jefinho/Documents/SWPROJECTS/Zeus/downloads/smp3"
+            caminho = os.path.abspath("./downloads/smp3")
             if opcao_cont['0'] == 'Playlist' or opcao_cont['0'] == 'Um Arquivo':
                 if opcao_cont['0'] == 'Um Arquivo':
                     Sistema.downloadYT(link, caminho,tipoarq)
@@ -132,7 +133,7 @@ def system(ui):
         ui.pb_download.clicked.connect(very33)
 
     def up_thumbneil(dir):
-        imagem = edit_image.reduzir_tamanho('./SistemadeDownload/downloadimage','./SistemadeDownload/downloadimagecache')
+        imagem = edit_image.reduzir_tamanho(os.path.abspath('./SistemadeDownload/downloadimage'),os.path.abspath('./SistemadeDownload/downloadimagecache'))
         print(imagem)
         if imagem:
             ui.gpv_background.setStyleSheet("background-image: url(./SistemadeDownload/downloadimagecache/atual.png);\n"
@@ -160,7 +161,7 @@ def system(ui):
                 ui.l_titulo.setText(tit)
                 ui.l_titulo.show()
                 veryCheckBox()
-                up_thumbneil('./SistemadeDownload/downloadimagecache/atual.png')
+                up_thumbneil(os.path.abspath('./Zeus/SistemadeDownload/downloadimagecache/atual.png'))
             else:
                 print('erro')
     ui.pb_verificar.clicked.connect(verificarpb)

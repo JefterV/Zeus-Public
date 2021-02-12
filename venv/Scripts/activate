@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\jefter\Documents\GitHub\Zeus\venv"
+VIRTUAL_ENV="C:\Users\jefin\Documents\Projects SW\Zeus\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

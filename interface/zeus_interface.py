@@ -4,6 +4,18 @@ from SistemaZEUS.image_mnp import edit_image
 #from SistemadeReproduzing import arqmp3
 import os
 
+################ REPRODUÇÃO ################
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QHBoxLayout, QVBoxLayout, QLabel, \
+    QSlider, QStyle, QSizePolicy, QFileDialog, QMainWindow
+import sys
+from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+from PyQt5.QtMultimediaWidgets import QVideoWidget
+from PyQt5.QtGui import QIcon, QPalette
+from PyQt5.QtCore import Qt, QUrl
+############################################
+
+controleTIPODODOWNLOAD = ''
+
 def system(ui):
 
     ######### ESCONDENDO Widgets...
@@ -53,11 +65,19 @@ def system(ui):
             """
             cont_play = ui.rb_playlist.isChecked()
             cont_arq  = ui.rb_umarq.isChecked()
+            
             if cont_arq or cont_play:
                 if cont_arq:
+                    actionPLAY()
+                    global controleTIPODODOWNLOAD 
+                    controleTIPODODOWNLOAD = 'Um arq'
                     Bloco_2('Um Arquivo')
                 else:
+                    global controleTIPODODOWNLOAD 
+                    controleTIPODODOWNLOAD = 'Playlist'
+                    actionPLAY()
                     Bloco_2('Playlist')
+                
         
         
         def tipo(opcao_cont):
@@ -296,12 +316,16 @@ def system(ui):
                 controle_midia = "Playlist"
 
             # Verificando link 
+            global controleTIPODODOWNLOAD 
+            controleTIPODODOWNLOAD = controle_midia
             tit = Sistema.titulo(link, controle_midia)           
             if tit != False:
                 ui.l_titulo.setText(tit)
                 ui.l_titulo.show()
                 veryCheckBox()
+                actionPLAY()
                 up_thumbneil(os.path.abspath('./Zeus/SistemadeDownload/downloadimagecache/atual.png'))
+                
                 return True
             else:
                 return False
@@ -312,7 +336,120 @@ def system(ui):
             
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+######################### BLOCO INDEPENDENTE- REPRODUÇÃO DE VIDEO ############################ 
 
+
+
+ 
+ 
+    def init_ui(self):
+        ui.pb_play.disconnect()
+        #create media player object
+        self.mediaPlayer = QMediaPlayer(None, QMediaPlayer.VideoSurface)
+ 
+    
+        #create videowidget object
+ 
+        videowidget = QVideoWidget()
+        videowidget.show()
+ 
+        #create open button
+        
+        ui.pb_stop.clicked.connect(self.open_file)
+ 
+ 
+ 
+        #create button for playing
+        
+        ui.pb_play.clicked.connect(self.play_video)
+ 
+ 
+ 
+        #create slider
+        
+        ui.hslider_music.sliderMoved.connect(self.set_position)
+        
+
+ 
+ 
+ 
+        #create vbox layout
+        vboxLayout = QVBoxLayout()
+        vboxLayout.addWidget(videowidget)
+
+        self.setLayout(vboxLayout)
+        ui.videoSAIDAt.setLayout(vboxLayout)
+        
+ 
+ 
+        #self.setLayout(vboxLayout)
+ 
+        self.mediaPlayer.setVideoOutput(videowidget)
+ 
+ 
+        #media player signals
+ 
+        self.mediaPlayer.stateChanged.connect(self.mediastate_changed)
+        self.mediaPlayer.positionChanged.connect(self.position_changed)
+        self.mediaPlayer.durationChanged.connect(self.duration_changed)
+ 
+ 
+    def open_file(self):
+        filename = os.path.abspath('./Zeus/SistemadeDownload/previsu/vid.mp4')
+ 
+        if filename != '':
+            self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(filename)))
+            ui.pb_play.setEnabled(True)
+ 
+ 
+    def play_video(self):
+        if self.mediaPlayer.state() == QMediaPlayer.PlayingState:
+            self.mediaPlayer.pause()
+ 
+        else:
+            self.mediaPlayer.play()
+ 
+ 
+    def mediastate_changed(self, state):
+        if self.mediaPlayer.state() == QMediaPlayer.PlayingState:
+            ui.pb_play.setIcon(
+                self.style().standardIcon(QStyle.SP_MediaPause)
+ 
+            )
+ 
+        else:
+            ui.pb_play.setIcon(
+                self.style().standardIcon(QStyle.SP_MediaPlay)
+ 
+            )
+ 
+    def position_changed(self, position):
+        ui.hslider_music.setValue(position)
+ 
+ 
+    def duration_changed(self, duration):
+        ui.hslider_music.setRange(0, duration)
+ 
+ 
+    def set_position(self, position):
+        self.mediaPlayer.setPosition(position)
+ 
+ 
+    def handle_errors(self):
+        ui.pb_play.setEnabled(False)
+
+    def previwACTVATE():
+        link = ui.line_link.text()
+
+        global controleTIPODODOWNLOAD 
+        tipo = controleTIPODODOWNLOAD
+
+        Sistema.up_previw(link, tipo)
+        ui.init_ui()
+
+    def actionPLAY():
+        ui.pb_play.setText('PREVIEW')
+        ui.pb_play.clicked.connect(previwACTVATE)
 
 
 if __name__ == "__main__":

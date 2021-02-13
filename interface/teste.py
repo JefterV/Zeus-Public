@@ -114,8 +114,8 @@ class Janela1(QMainWindow):
                 
                 
                 # Verificando o tipo do download
-                if opcao_cont['0'] == 'Playlist' or opcao_cont['0'] == 'Um Arqself.uivo':
-                    if opcao_cont['0'] == 'Um Arqself.uivo':
+                if opcao_cont['0'] == 'Playlist' or opcao_cont['0'] == 'Um Arquivo':
+                    if opcao_cont['0'] == 'Um Arquivo':
                         Sistema.downloadYT(link, caminho,tipoarq)
                     else:
                         Sistema.DownloadPlaylist(link, caminho,tipoarq)
@@ -268,7 +268,7 @@ class Janela1(QMainWindow):
 
                 if cont_arq or cont_play:
                     if cont_arq:
-                        Bloco_2('Um Arqself.uivo')
+                        Bloco_2('Um Arquivo')
                     else:
                         Bloco_2('Playlist')
 
@@ -324,6 +324,7 @@ class Janela1(QMainWindow):
                 elif cont_play:
                     controle_midia = "Playlist"
 
+                print(controle_midia)    
                 # Verificando link 
                 global controleTIPODODOWNLOAD 
                 controleTIPODODOWNLOAD = controle_midia
@@ -332,7 +333,7 @@ class Janela1(QMainWindow):
                     self.ui.l_titulo.setText(tit)
                     self.ui.l_titulo.show()
                     veryCheckBox()
-                    actionPLAY()
+                    actionPLAY() # 
                     up_thumbneil(os.path.abspath('./Zeus/SistemadeDownload/downloadimagecache/atual.png'))
                     
                     return True
@@ -348,58 +349,34 @@ class Janela1(QMainWindow):
 ######################### BLOCO INDEPENDENTE- REPRODUÇÃO DE VIDEO ############################ 
 
 
-
+        
         def previwACTVATE():
             link = self.ui.line_link.text()
 
             global controleTIPODODOWNLOAD 
             tipo = controleTIPODODOWNLOAD
-            print(tipo)
             Sistema.up_previw(link, tipo)
-            init_ui()
-    
-        def init_ui():
-            self.ui.pb_play.disconnect()
             
-            #create media player object
-            self.mediaPlayer = QMediaPlayer(None, QMediaPlayer.VideoSurface)
-            self.ui.pb_stop.disconnect()
+            self.mediaPlayer.setMedia(QMediaContent())
+            
+            abrirVideo()
         
-            #create videowidget object
-    
-            videowidget = QVideoWidget(self)
-            
-            videowidget.show()
-    
-            #create open button
-            
-            
-    
-    
-    
-            #create button for playing
-            
-            
-            filename = os.path.abspath('./SistemadeDownload/previsu/vid.mp4')
-            
-            if filename != '':
-                self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(filename)))
-                self.ui.pb_play.setEnabled(True)
-            self.ui.pb_play.clicked.connect(play_video)
-            self.ui.pb_verificar.disconnect()
-            self.ui.pb_verificar.clicked.connect(self.mediaPlayer.stop)
-            self.ui.pb_verificar.clicked.connect(Primeira_etapa)
-    
-    
-            #create slider
-            
-            self.ui.hslider_music.sliderMoved.connect(set_position)
+
+        def abrirVideo():     
+            open_file()
             
 
-    
-    
-    
-            #create vbox layout
+
+
+        def init_ui():         
+            self.mediaPlayer = QMediaPlayer(None, QMediaPlayer.VideoSurface)   
+            videowidget = QVideoWidget(self)            
+            videowidget.show()
+              
+            
+            self.ui.hslider_music.sliderMoved.connect(set_position)
+       
+           
             vboxLayout = QVBoxLayout()
             vboxLayout.addWidget(videowidget)
 
@@ -407,27 +384,24 @@ class Janela1(QMainWindow):
             self.ui.videoSAIDA.setLayout(vboxLayout)
             
     
-    
-            #self.setLayout(vboxLayout)
-    
-            self.mediaPlayer.setVideoOutput(videowidget)
-    
-    
-            #media player signals
+            self.mediaPlayer.setVideoOutput(videowidget)       
     
             self.mediaPlayer.stateChanged.connect(mediastate_changed)
             self.mediaPlayer.positionChanged.connect(position_changed)
             self.mediaPlayer.durationChanged.connect(duration_changed)
     
-    
+
+
         def open_file():
+            self.ui.pb_stop.disconnect()
             self.ui.pb_play.disconnect()
+            self.ui.pb_play.clicked.connect(play_video)
             filename = os.path.abspath('./SistemadeDownload/previsu/vid.mp4')
     
             if filename != '':
                 self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(filename)))
                 self.ui.pb_play.setEnabled(True)
-            self.ui.pb_play.clicked.connect(play_video)
+            
     
         def play_video():
             if self.mediaPlayer.state() == QMediaPlayer.PlayingState:
@@ -472,7 +446,8 @@ class Janela1(QMainWindow):
             self.ui.pb_stop.setText('PREVIEW')
             self.ui.pb_stop.clicked.connect(previwACTVATE)
 
-
+        
+        init_ui()
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

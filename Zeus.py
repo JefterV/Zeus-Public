@@ -23,7 +23,7 @@ while True:
 [ 4 ] - Encerrar""") 
         var_controle = str(input('Sua opção: '))
 
-        # ESTRUTURA DE OPÇÕES 
+        # ESTRUTURA DE OPÇÕES 2
         if var_controle == '1' or var_controle == '2' or var_controle == '3':
             
             if var_controle == '1': #converter

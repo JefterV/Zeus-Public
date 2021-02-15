@@ -1,8 +1,14 @@
 from zeus import *
 from SistemaZEUS.sistema import Sistema
 from SistemaZEUS.image_mnp import edit_image
-#from SistemadeReproduzing import arqmp3
+
+
+################ SISTEMA / HARDWARE DA MAQUINA #################
+
 import os
+
+
+
 
 ################ REPRODUÇÃO ################
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QHBoxLayout, QVBoxLayout, QLabel, \
@@ -22,11 +28,13 @@ class Janela1(QMainWindow):
         self.ui =  Ui_MainWindow()
         self.ui.setupUi(self)
         self.system()
-        self.show()
+        
 
     def system(self):
 
         ######### ESCONDENDO Widgets...
+        self.ui.pb_stop.hide()
+        
         self.ui.l_titulo.hide()
         self.ui.barradeprogresso.hide()
         self.ui.pushButton.hide()
@@ -445,12 +453,13 @@ class Janela1(QMainWindow):
             
             self.ui.pb_stop.setText('PREVIEW')
             self.ui.pb_stop.clicked.connect(previwACTVATE)
-
+            self.ui.pb_stop.show()
         
         init_ui()
 if __name__ == "__main__":
     import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    Janela1()
+
+    app = QApplication(sys.argv)
+    lg = Janela1()
+    lg.show()
     sys.exit(app.exec_())

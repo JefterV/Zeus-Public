@@ -7,7 +7,7 @@
 <p align="center">The monorepo of a application that allows users to schedule an appointment with their favorite barber and show the barber their schedule for the day.</p>
 
 <div align="center" >
-  <img src="./github/SignGoBarber.gif" alt="demo-web" height="425">
+  <img src="./github/ZeusGif.gif" alt="demo-web" height="425">
   <img src="./github/WebGoBarber.gif" alt="demo-web" height="425">
   <img src="./github/AppGobarber.gif" alt="demo-mobile" height="425">
 </div>

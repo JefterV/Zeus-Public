@@ -15,7 +15,7 @@
 
 # See the repositories
 
-### - [INTERFACE] https://github.com/JefterV/Zeus-Public/tree/main/interface
+### - [INTERFACE_] https://github.com/JefterV/Zeus-Public/tree/main/interface
 ### - [CONSOLE] https://github.com/JefterV/Zeus-Public/blob/main/Zeus_Console.py
 
 ---

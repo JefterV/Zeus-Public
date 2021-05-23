@@ -1,6 +1,6 @@
 #UTF-8
-from SistemadeDownload.sistema import *
-from SistemadeReproduzing.arqmp3 import *
+from SistemaZEUS.sistema import  *
+from SistemaZEUS.conv_mp3 import  *
 import time
 while True:
     # CABEÇALHO

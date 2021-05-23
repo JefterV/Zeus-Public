@@ -4,20 +4,18 @@
 <br>
 </h1>
 
-<p align="center">The monorepo of a application that allows users to schedule an appointment with their favorite barber and show the barber their schedule for the day.</p>
+<p align="center">Welcome to Zeus, your download software. For more information see my YouTube channel.</p>
 
 <div align="center" >
   <img src="./github/ZeusGif.gif" alt="demo-web" height="425">
-  <img src="./github/ZeusGif2.gif" alt="demo-web" height="425">
-  <img src="./github/AppGobarber.gif" alt="demo-mobile" height="425">
 </div>
 
 ---
 
 # See the repositories
 
-### - [INTERFACE]
-### - [CONSOLE]
+### - [INTERFACE] https://github.com/JefterV/Zeus-Public/tree/main/interface
+### - [CONSOLE] https://github.com/JefterV/Zeus-Public/blob/main/Zeus_Console.py
 
 ---
 

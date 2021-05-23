@@ -27,7 +27,7 @@
 This project was developed with the following technologies:
 
 - ✔️ Python 
-- ✔️ XML
+- ✔️ QML
 
 Made with 💜 by JEFTER 👋 [See my linkedin](https://www.linkedin.com/in/jefter-viana-361b781a5/)
 <br>

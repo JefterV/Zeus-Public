@@ -8,7 +8,7 @@
 
 <div align="center" >
   <img src="./github/ZeusGif.gif" alt="demo-web" height="425">
-  <img src="./github/WebGoBarber.gif" alt="demo-web" height="425">
+  <img src="./github/ZeusGif2.gif" alt="demo-web" height="425">
   <img src="./github/AppGobarber.gif" alt="demo-mobile" height="425">
 </div>
 

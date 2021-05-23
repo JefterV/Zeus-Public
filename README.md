@@ -7,6 +7,7 @@
 <p align="center">Welcome to Zeus, your download software. For more information see my YouTube channel.</p>
 
 <div align="center" >
+<a href="https://www.youtube.com/watch?v=pREjLls6FaI&t=150s">
   <img src="./github/ZeusGif.gif" alt="zeus-gif" height="425">
 </div>
 
@@ -26,6 +27,7 @@ This project was developed with the following technologies:
 
 - ✔️ Python 
 - ✔️ QML
+- ✔️ PyQt5
 
 Made with ❤ by JEFTER 👋 [See my linkedin](https://www.linkedin.com/in/jefter-viana-361b781a5/)
 <br>

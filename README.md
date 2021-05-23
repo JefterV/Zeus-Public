@@ -31,7 +31,7 @@ Made with 💜 by JEFTER 👋 [See my linkedin](https://www.linkedin.com/in/jeft
 <br>
 <a href="https://www.youtube.com/watch?v=pREjLls6FaI&t=150s">
   <div style="align-self: center;align-items: center;" >
-    <p><img src="./github/youtube.png" alt="Jefter Viana" style="border-radius: 50%;width: 25px; height: 25px;">
+    <p><img src="./github/youtube1.png" alt="Jefter Viana" style="border-radius: 50%;width: 25px; height: 25px;">
       See my Youtube channel!</p>
   </div>
 </a>

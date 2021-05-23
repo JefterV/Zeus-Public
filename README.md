@@ -27,7 +27,7 @@ This project was developed with the following technologies:
 - ✔️ Python 
 - ✔️ QML
 
-Made with 💜 by JEFTER 👋 [See my linkedin](https://www.linkedin.com/in/jefter-viana-361b781a5/)
+Made with ❤ by JEFTER 👋 [See my linkedin](https://www.linkedin.com/in/jefter-viana-361b781a5/)
 <br>
 <a href="https://www.youtube.com/watch?v=pREjLls6FaI&t=150s">
   <div style="align-self: center;align-items: center;" >
